@@ -1,14 +1,9 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Area = sequelize.define("Area", {
-    // The email cannot be null, and must be a proper email before creation
-    // this will be used to identify the users
-    email: {
+    companyName: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isEmail: true
-      }
+      allowNull: false
     },
     area: {
       type: DataTypes.STRING,

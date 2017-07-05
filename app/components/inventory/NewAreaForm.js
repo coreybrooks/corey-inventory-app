@@ -1,13 +1,14 @@
 import React, {Component} from "react";
 import axios from "axios";
 
-export default class LoginForm extends Component {
+export default class NewAreaForm extends Component {
     constructor() {
         super();
 
         this.state = {
-            email: "",
-            password: "",
+            companyName: "",
+            area: "",
+            color: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,25 +22,14 @@ handleSubmit(event){
   console.log("handleSubmit is working");
   event.preventDefault();
   var data= this.state;
-  if (!this.state.email || !this.state.password) {
-    console.log("missing field");
-    return;
-  }
-  axios.post("/api/login", data).then( response => {
-    console.log(`login response: ${JSON.stringify(response.data)}`);
-    if (response.data !== "noMatch") {
-      console.log(`returned data is matched`);
-      window.location.replace(`/#/members/${response.data.companyName}`);
-    }
-    else {
-      alert("email or password is incorrect, try again! \nIf this is your first visit, please sign up first");
-    }
+  axios.post("/api/area", data).then( response => {
+    console.log(`area response: ${JSON.stringify(response.data)}`);
   }).catch(function(err) {
     console.log(err);
   });
   {/*window.location.replace(`/#/listing/${this.state.subredditId}`);
   this.setState({emailInput: "", passwordInput: ""}); not sure if I need this yet */}
-  this.setState({email: "", password: ""});
+  this.setState({area: "", color: ""});
 }
 render() {
     return (
@@ -48,34 +38,32 @@ render() {
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-md-offset-3">
-              <h2>Login Form</h2>
+              <h2>Make New Area</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">Email address</label>
+                  <label htmlFor="newAreaName">Name of Area</label>
                   <input 
-                  type="email" 
-                  value={this.state.email}
+                  type="text" 
+                  value={this.state.area}
                   onChange={this.handleChange}
                   className="form-control" 
-                  id="email" 
-                  placeholder="Email"
+                  id="area" 
+                  placeholder="for example: walk-in"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInputPassword1">Password</label>
+                  <label htmlFor="color">Color for area legend</label>
                   <input 
-                  type="password" 
-                  value={this.state.password}
+                  type="text" 
+                  value={this.state.color}
                   onChange={this.handleChange}
                   className="form-control" 
-                  id="password" 
-                  placeholder="Password"
+                  id="color" 
+                  placeholder="color"
                   />
                 </div>
-                <button type="submit" className="btn btn-default">Login</button>
+                <button type="submit" className="btn btn-default">Submit</button>
               </form>
-              <br />
-              <p>Or sign up <a href="/#/signup">here</a></p>
             </div>
           </div>
         </div>        
