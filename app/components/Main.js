@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Header from '../components/subreddit/Header';
-import Footer from '../components/subreddit/Footer';
+import Header from '../components/inventory/Header';
+import Footer from '../components/inventory/Footer';
 
 export default class Main extends Component {
 	constructor() {
@@ -13,12 +13,13 @@ export default class Main extends Component {
 		this.renderResults = this.renderResults.bind(this);
 	}
 	componentDidMount() {
-			axios.get('/posts/categories').then( results => {
-			this.setState({categories: results.data});
-	  });
+		console.log(`main component mounted`);
+			{/*axios.get('/posts/categories').then( results => {
+			this.setState({categories: results.data}); 
+	  }); stuff from reddit */}
 	}
 	renderResults() {
-		if (this.state.categories === []) {
+		{/*if (this.state.categories === []) {
 			return
 		}
 		else {
@@ -28,32 +29,18 @@ export default class Main extends Component {
             <a href={`/#/listing/${category}`}>{category}</a>
 					</div>
 			));
-		}
+		} stuff from reddit*/}
 	}
 	render() {
 		return (
-		<div>	
-			<div className="mainContainer">
-			  <Header />
-			    <div className="outerContainer">
-				  <div className="middleContainer">
-				    <div className="container">
-					  <div className="jumbotron">
-					    <h2><strong>Reddit - React!</strong></h2>
-					  </div>
-					  <div className="row">
-						{/* This code will dump the correct Child Component */}
-						{this.props.children}
-					  </div>
-					  <h4>Categories</h4>
-					  <div>
-					    {this.renderResults()}
-					  </div>
-					</div>
-				  </div>
-				</div>
-			</div>
-    	    <Footer />
+		<div>
+		   <div className="mainContainer">
+		     <Header />
+
+			 {this.props.children}
+
+    	     <Footer />
+		   </div>
 		</div>
 		);
 	}

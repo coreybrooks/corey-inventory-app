@@ -8,10 +8,7 @@ var session = require("express-session");
 var passport = require("./config/passport");
 var db = require("./models");
 
-
-const posts = require('./api/routes/posts');
-
-/* mongoose.Promise = Promise; */
+//const posts = require('./routes/api-routes');
 
 const PORT = process.env.PORT || 3000;
 
@@ -33,31 +30,10 @@ app.use(passport.session());
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
-/*
-//database configuration with mongoose
-if (process.env.MONGODB_URI) {
-    mongoose.connect(process.env.MONGODB_URI);
-} else {
-mongoose.connect('mongodb://localhost/reddit');
-}
-
-var db = mongoose.connection;
-
-//show any mongoose errors
-db.on("error", function(error) {
-    console.log("mongoose error: " + error);
-});
-
-//once logged into the db through mongoose, log a success message
-db.once("open", function() {
-    console.log("mongooose connection was successful");    
-});
-*/
-
-app.use('/posts', posts);
+//app.use('/posts', posts);
 
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force: false}).then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });

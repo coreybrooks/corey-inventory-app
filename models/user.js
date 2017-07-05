@@ -16,6 +16,10 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    companyName: {
+      type: DataTypes.STRING,
+      allowNull: false     
     }
   }, {
     // Creating a custom method for our User model. This will check if an unhashed password entered by
@@ -25,14 +29,16 @@ module.exports = function(sequelize, DataTypes) {
         return bcrypt.compareSync(password, this.password);
       }
     },
+    //this part was causing the user model to malfunction in React
     // Hooks are automatic methods that run during various phases of the User Model lifecycle
     // In this case, before a User is created, we will automatically hash their password
-    hooks: {
+    /*hooks: {
       beforeCreate: function(user, options, cb) {
         user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
         cb(null, options);
       }
-    }
+    }, */
+    timestamps: false  
   });
   return User;
 
