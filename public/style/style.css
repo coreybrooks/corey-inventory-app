@@ -49,6 +49,11 @@ html {
     width: 150px;
     border: 2px groove #13DBF4;
 }
+.tableForm {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
 .legendTitle {
     border-bottom: 2px groove #13DBF4;
     padding-bottom: 5px;

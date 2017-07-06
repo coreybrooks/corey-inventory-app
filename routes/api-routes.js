@@ -77,6 +77,19 @@ module.exports = function(app) {
     });
   });
 
+  //route for retrieving items areas per company
+  app.get("/api/items/:companyName", function(req, res) {
+    console.log("api/items/:companyName get route is working in api-routes");
+    console.log(req.params.companyName);
+    db.Item.findAll({
+      where: {companyName: req.params.companyName}}).then(function(Item) {
+      res.json(Item);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  });
+
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
