@@ -16,9 +16,6 @@ export default class NewAreaForm extends Component {
 componentDidMount() {
     console.log(`this.props.companyName for NewAreaForm: ${JSON.stringify(this.props.companyName)}`);
     this.setState({companyName: this.props.companyName});
-    {/*axios.get(`/api/user-data`).then( data => {
-        this.setState({memberName: data.email});
-    })*/}
 }
 handleChange(event){
     var newState = {};
@@ -31,12 +28,11 @@ handleSubmit(event){
   var data= this.state;
   axios.post("/api/area", data).then( response => {
     console.log(`area response: ${JSON.stringify(response.data)}`);
-  }).catch(function(err) {
+    }).catch(function(err) {
     console.log(err);
   });
-  {/*window.location.replace(`/#/listing/${this.state.subredditId}`);
-  this.setState({emailInput: "", passwordInput: ""}); not sure if I need this yet */}
   this.setState({area: "", color: ""});
+  location.reload();
 }
 render() {
     return (
@@ -59,18 +55,24 @@ render() {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="color">Color for area legend</label>
+                  <label htmlFor="color">Select Color</label>
                   <select
                   value={this.state.color}
                   onChange={this.handleChange}
                   className="form-control" 
                   id="color" 
                   >
+                    <option></option>
                     <option>blue</option>
+                    <option>lightblue</option>
+                    <option>green</option>
+                    <option>lightgreen</option>
+                    <option>olive</option>
+                    <option>orange</option>
+                    <option>pink</option>
+                    <option>purple</option>
                     <option>red</option>
                     <option>yellow</option>
-                    <option>green</option>
-                    <option>purple</option>
                  </select>
                 </div>
                 <button type="submit" className="btn btn-default">Submit</button>

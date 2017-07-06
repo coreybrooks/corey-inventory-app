@@ -53,6 +53,19 @@ module.exports = function(app) {
     });
   });
 
+  //route for retrieving inventory areas per company
+  app.get("/api/area/:companyName", function(req, res) {
+    console.log("api/area get route is working in api-routes");
+    console.log(req.params.companyName);
+    db.Area.findAll({
+      where: {companyName: req.params.companyName}}).then(function(Area) {
+      res.json(Area);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  });
+
+
   //route for creating new item
   app.post("/api/item", function(req, res) {
     console.log("api/item post route is working in api-routes");

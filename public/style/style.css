@@ -45,6 +45,18 @@ html {
     max-width: 800px;
     height: 100%;    
 }
+.colorLegend {
+    width: 150px;
+    border: 2px groove #13DBF4;
+}
+.legendTitle {
+    border-bottom: 2px groove #13DBF4;
+    padding-bottom: 5px;
+}
+.areaName {
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
 .commentTitle {
    text-decoration: underline;
 }

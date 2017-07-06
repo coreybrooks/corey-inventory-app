@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     unitSize: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.STRING,
         allowNull: true
     },
     area1: {
@@ -25,6 +25,8 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.FLOAT,
         allowNull: true
     }
+  }, {
+      timestamps: false
   });
 return Item;
 };
