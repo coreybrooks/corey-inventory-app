@@ -42,6 +42,28 @@ module.exports = function(app) {
     });
   });
 
+  //route for creating new inventory area
+  app.post("/api/area", function(req, res) {
+    console.log("api/area post route is working in api-routes");
+    console.log(req.body);
+    db.Area.create(req.body).then(function(Area) {
+      res.json(Area);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  });
+
+  //route for creating new item
+  app.post("/api/item", function(req, res) {
+    console.log("api/item post route is working in api-routes");
+    console.log(req.body);
+    db.Item.create(req.body).then(function(Item) {
+      res.json(Item);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  });
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();

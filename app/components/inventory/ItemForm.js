@@ -1,14 +1,17 @@
 import React, {Component} from "react";
 import axios from "axios";
 
-export default class NewAreaForm extends Component {
+export default class ItemForm extends Component {
     constructor() {
         super();
 
         this.state = {
             companyName: "",
-            area: "",
-            color: ""
+            item: "",
+            unitSize: "",
+            area1: "",
+            area2: "",
+            dailyNeed: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,14 +32,14 @@ handleSubmit(event){
   console.log("handleSubmit is working");
   event.preventDefault();
   var data= this.state;
-  axios.post("/api/area", data).then( response => {
+  axios.post("/api/item", data).then( response => {
     console.log(`area response: ${JSON.stringify(response.data)}`);
   }).catch(function(err) {
     console.log(err);
   });
   {/*window.location.replace(`/#/listing/${this.state.subredditId}`);
   this.setState({emailInput: "", passwordInput: ""}); not sure if I need this yet */}
-  this.setState({area: "", color: ""});
+  this.setState({item: "", unitSize: "", area1: "", area2: "", dailyNeed:""});
 }
 render() {
     return (
@@ -45,26 +48,37 @@ render() {
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-md-offset-3">
-              <h2>Make New Area</h2>
+              <h2>Make New Item</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor="newAreaName">Name of Area</label>
+                  <label htmlFor="item">Name of Item</label>
                   <input 
                   type="text" 
-                  value={this.state.area}
+                  value={this.state.item}
                   onChange={this.handleChange}
                   className="form-control" 
-                  id="area" 
-                  placeholder="for example: walk-in"
+                  id="item" 
+                  placeholder="enter item"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="color">Color for area legend</label>
-                  <select
-                  value={this.state.color}
+                  <label htmlFor="unitSize">Unit Size</label>
+                  <input 
+                  type="text" 
+                  value={this.state.unitSize}
                   onChange={this.handleChange}
                   className="form-control" 
-                  id="color" 
+                  id="unitSize" 
+                  placeholder="enter unit size in decimals"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="area1">Area 1</label>
+                  <select
+                  value={this.state.area1}
+                  onChange={this.handleChange}
+                  className="form-control" 
+                  id="area1" 
                   >
                     <option>blue</option>
                     <option>red</option>
@@ -73,6 +87,32 @@ render() {
                     <option>purple</option>
                  </select>
                 </div>
+                <div className="form-group">
+                  <label htmlFor="area2">Area 2</label>
+                  <select
+                  value={this.state.area2}
+                  onChange={this.handleChange}
+                  className="form-control" 
+                  id="area2" 
+                  >
+                    <option>blue</option>
+                    <option>red</option>
+                    <option>yellow</option>
+                    <option>green</option>
+                    <option>purple</option>
+                 </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="dailyNeed">Daily Need</label>
+                  <input 
+                  type="text" 
+                  value={this.state.dailyNeed}
+                  onChange={this.handleChange}
+                  className="form-control" 
+                  id="dailyNeed" 
+                  placeholder="Enter units used on a daily basis as decimal"
+                  />
+                </div>               
                 <button type="submit" className="btn btn-default">Submit</button>
               </form>
             </div>

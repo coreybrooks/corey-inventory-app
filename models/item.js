@@ -10,18 +10,18 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     unitSize: {
-        type: DataTypes.STRING,
+        type: DataTypes.FLOAT,
         allowNull: true
     },
     area1: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.STRING,
         allowNull: true
     },
     area2: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.STRING,
         allowNull: true
     },
-    dailyNeeds: {
+    dailyNeed: {
         type: DataTypes.FLOAT,
         allowNull: true
     }

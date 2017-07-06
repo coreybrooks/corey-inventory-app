@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import NewAreaForm from "./NewAreaForm";
+import ItemForm from "./ItemForm";
 
 export default class Member extends Component {
     constructor() {
@@ -23,7 +25,9 @@ render() {
           <div className="row">
             <div className="col-md-6 col-md-offset-3">
             <h2>Welcome <span>{this.state.memberName}</span></h2>
-            </div>
+            <NewAreaForm companyName={this.props.params.companyName} />
+            <ItemForm companyName={this.props.params.companyName} />
+       </div>
           </div>
         </div>
     );
