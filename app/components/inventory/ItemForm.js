@@ -10,11 +10,14 @@ export default class ItemForm extends Component {
             item: "",
             unitSize: "",
             area1: "",
+            color1: "",
             area2: "",
+            color2: "",
             dailyNeed: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.createItem = this.createItem.bind(this);
   }
 componentDidMount() {
     this.setState({companyName: this.props.companyName});
@@ -47,16 +50,31 @@ handleChange(event){
     newState[event.target.id] = event.target.value;
     this.setState(newState);
 }
-handleSubmit(event){
-  console.log("handleSubmit is working");
-  event.preventDefault();
-  var data= this.state;
-  axios.post("/api/item", data).then( response => {
-    console.log(`area response: ${JSON.stringify(response.data)}`);
+createItem() {
+    var data= this.state;
+    console.log(`this data: ${JSON.stringify(data)}`)
+    axios.post("/api/item", data).then( response => {
+    console.log(`item response: ${JSON.stringify(response.data)}`);
     }).catch(function(err) {
     console.log(err);
   });
-  this.setState({item: "", unitSize: "", area1: "", area2: "", dailyNeed:""});
+  this.setState({item: "", unitSize: "", area1: "", color1: "", area2: "", color2: "", dailyNeed:""});
+}
+handleSubmit(event){
+  console.log("handleSubmit is working");
+  event.preventDefault();
+  //axios request to retrieve colors associated with areas
+        axios.get(`/api/areaColor/${this.props.companyName}/${this.state.area1}`).then( results => {
+              this.setState({color1: results.data});
+        console.log(`api/areaColor GET request results: ${JSON.stringify(results.data)}`);
+            console.log(`this.state.color1: ${JSON.stringify(this.state.color1)}`);
+        });
+        axios.get(`/api/areaColor/${this.props.companyName}/${this.state.area2}`).then( results => {
+              this.setState({color2: results.data});
+        console.log(`api/areaColor GET request results: ${JSON.stringify(results.data)}`);
+            console.log(`this.state.color2: ${JSON.stringify(this.state.color2)}`);
+            this.createItem();
+        });
 }
 render() {
     return (

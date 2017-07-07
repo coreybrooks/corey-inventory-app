@@ -82,19 +82,16 @@ export default class Inventory extends Component {
       });
       //axios request to get area colors
       axios.get(`/api/area/${this.props.params.companyName}`).then( results => {
-       this.setState({areas: results.data});
-       //dynamically create the form options based on the existing areas
+        var colorArray = [];
+        for (var i=0; i<results.data.length; i++) {
+          var item = results.data[i];
+          var color = item.color;
+          var area = item.area;
+          colorArray.push({area: color});
+        }
+        console.log(`colorArray: ${JSON.stringify(colorArray)}`);
+       this.setState({areas: colorArray});
     });
-  }
-  /*componentWillReceiveProps(nextProps) {
-		if (this.props.params.item !== nextProps.params.item) {
-			axios.get(`/api/items/${this.props.params.companyName}`).then(results => {
-				this.setState({ items: results.data });
-			});
-		}
-  }*/
-  setTerms(data) {
-
   }
   render() {
       return (
@@ -134,7 +131,7 @@ export default class Inventory extends Component {
                           <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.item}</td>
-                            <td>{item.area1}</td>
+                            <td style={{color: item.color1}}>{item.area1}</td>
                             <td>
                             <div className="form-group">
                                 <input 
@@ -147,7 +144,7 @@ export default class Inventory extends Component {
                                 />
                             </div>
                             </td>
-                            <td>{item.area2}</td>
+                            <td style={{color: item.color2}}>{item.area2}</td>
                             <td>
                             <div className="form-group">
                                 <input 

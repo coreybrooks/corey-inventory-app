@@ -17,7 +17,15 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: true
     },
+    color1: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     area2: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    color2: {
         type: DataTypes.STRING,
         allowNull: true
     },

@@ -55,7 +55,7 @@ module.exports = function(app) {
 
   //route for retrieving inventory areas per company
   app.get("/api/area/:companyName", function(req, res) {
-    console.log("api/area get route is working in api-routes");
+    console.log("api/area/:companyName get route is working in api-routes");
     console.log(req.params.companyName);
     db.Area.findAll({
       where: {companyName: req.params.companyName}}).then(function(Area) {
@@ -64,6 +64,24 @@ module.exports = function(app) {
       res.json(err);
     });
   });
+
+    //route for retrieving inventory areas per company
+  app.get("/api/areaColor/:companyName/:area", function(req, res) {
+    console.log("api/areaColor/:companyName/:area get route is working in api-routes");
+    console.log(`api/areaColor req.params.area: ${JSON.stringify(req.params.area)}`);
+    db.Area.findAll({
+      where: {
+         companyName: req.params.companyName,
+         area: req.params.area               
+         }}).then(function(Area) {
+      console.log(`api/areaColor/:companyName/:area: ${JSON.stringify(Area)}`);
+          var color = Area[0].color;
+          res.json(color);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  });
+
 
 
   //route for creating new item
