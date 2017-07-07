@@ -89,6 +89,16 @@ module.exports = function(app) {
     });
   });
 
+  //route for creating inventory
+  app.post("/api/inventory", function(req, res) {
+    console.log("api/inventory post route is working in api-routes");
+    console.log(req.body);
+    db.Inventory.create(req.body).then(function(Inventory) {
+      res.json(Inventory);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  });
 
   // Route for logging user out
   app.get("/logout", function(req, res) {

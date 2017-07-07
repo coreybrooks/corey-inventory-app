@@ -17,6 +17,7 @@ export default class Inventory extends Component {
         this.componentDidMount = this.componentDidMount.bind(this);
         this.renderTable = this.renderTable.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
        // this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
        // this.getData = this.getData.bind(this);
    }
@@ -28,7 +29,47 @@ export default class Inventory extends Component {
     var newState = {};
     newState[event.target.id] = event.target.value;
     this.setState(newState);
-}
+  }
+  handleSubmit(event) {
+    console.log(`handleSubmit is working`);
+    event.preventDefault();
+    for (var i=0;i<this.state.items.length;i++) {
+       var item = this.state.items[i];
+       var count1 = parseFloat($("#area1Item"+item.id).val());
+       var count2 = parseFloat($(`#area2Item${item.id}`).val());
+       var days = parseInt($("#days").val());
+       var dailyNeed = parseFloat(item.dailyNeed);     
+       var countTotal = count1 + count2;
+       var order = Math.ceil(dailyNeed*days - countTotal);
+       if (order < 0) {
+         order = 0;
+       }   
+       
+       console.log(`order: ${order}`);
+       console.log(`item ${item.id}, count1: ${count1}, total: ${countTotal}`);
+       console.log(`area1: ${item.area1}`);
+       var record = {
+         companyName: this.state.companyName,
+         itemNumber: item.id,
+         item: item.item,
+         unitSize: item.unitSize,
+         area1: count1,
+         area2: count2,
+         total: countTotal,
+         dailyNeed: item.dailyNeed,
+         numberOfDays: days,
+         order: order
+       };
+       console.log(`record: ${JSON.stringify(record)}`);
+
+        axios.post("/api/inventory", record).then( response => {
+          console.log(`inventory response: ${JSON.stringify(response.data)}`);
+          }).catch(function(err) {
+          console.log(err);
+        });
+        //location.reload();       
+    }    
+  }
 
   componentDidMount() {
       console.log(`Inventory component mounted`);
@@ -40,7 +81,7 @@ export default class Inventory extends Component {
         this.setState({items: results.data});
       });
       //axios request to get area colors
-      axios.get(`/api/area/${this.props.companyName}`).then( results => {
+      axios.get(`/api/area/${this.props.params.companyName}`).then( results => {
        this.setState({areas: results.data});
        //dynamically create the form options based on the existing areas
     });
@@ -60,7 +101,16 @@ export default class Inventory extends Component {
           <div className="inventoryContainer">
             <AreaLegend companyName={this.props.params.companyName} />
             <form className="tableForm" onSubmit={this.handleSubmit}>
-            <h3 className="text-center">{this.props.params.companyName} Inventory</h3>            
+            <h3 className="text-center">{this.props.params.companyName} Inventory</h3> 
+              <div className="form-group">
+              <label htmlFor="days"># of days</label>
+              <input 
+                type="text" 
+                className="form-control" 
+                id="days" 
+                placeholder=""
+                />
+              </ div>           
             <table className="table table-striped table-bordered table-responsive table-compact">
               <thead>
                 <tr>
@@ -81,7 +131,7 @@ export default class Inventory extends Component {
                             console.log(`item map #: ${item.id}`);
                             var item1 = `item${item.id}Count1`;
                             return (
-                          <tr>
+                          <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.item}</td>
                             <td>{item.area1}</td>
@@ -89,29 +139,29 @@ export default class Inventory extends Component {
                             <div className="form-group">
                                 <input 
                                 type="text" 
-                                value={this.state.test}
-                                onChange={this.handleChange}
+                                //value={this.state.test}
+                                // onChange={this.handleChange}
                                 className="form-control" 
-                                id="test" 
+                                id={`area1Item${item.id}`} 
                                 placeholder=""
                                 />
                             </div>
                             </td>
                             <td>{item.area2}</td>
                             <td>
-                              <div className="form-group">
+                            <div className="form-group">
                                 <input 
                                 type="text" 
-                                value={`${this.state}.item${item.id}Count2`}
-                                onChange={this.handleChange}
+                                //value={this.state.test}
+                                // onChange={this.handleChange}
                                 className="form-control" 
-                                id={`item${item.id}Count2`} 
+                                id={`area2Item${item.id}`} 
                                 placeholder=""
                                 />
-                              </div>
+                            </div>
                             </td>
                             <td id={`${item.id}Total`}></td>
-                            <td>{item.dailyNeeds}</td>
+                            <td>{item.dailyNeed}</td>
                             <td id={`${item.id}Order`}></td>
                             <td>{item.unitSize}</td>
                         </tr>
