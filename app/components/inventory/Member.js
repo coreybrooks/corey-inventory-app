@@ -24,14 +24,22 @@ render() {
     return (
         <div className="container">
           <div className="row">
-            <div className="col-md-6 col-md-offset-3">
-              <h2>Welcome <span>{this.state.memberName}</span></h2>
-              <AreaLegend companyName={this.props.params.companyName} />
-              <NewAreaForm companyName={this.props.params.companyName} />
-              <ItemForm companyName={this.props.params.companyName} />
+            <div className="col-md-12">
+              <h2 className="text-center">Welcome <span>{this.state.memberName}</span></h2>
+              <hr/>
+              <div className="col-sm-6">
+                <NewAreaForm companyName={this.props.params.companyName} />
+                <hr />
+                <AreaLegend companyName={this.props.params.companyName} />
+              </div>
+              <div className="col-sm-6">
+                <ItemForm companyName={this.props.params.companyName} />
+              </div>
             </div>
           </div>
-          <a href={`/#/inventory/${this.state.memberName}`}>Begin inventory</a>
+            <button className="btn inventoryButton">
+              <a href={`/#/inventory/${this.state.memberName}`}>Begin inventory</a>
+            </button>
         </div>
     );
  }

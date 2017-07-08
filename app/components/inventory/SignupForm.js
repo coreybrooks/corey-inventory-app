@@ -40,9 +40,9 @@ handleSubmit(event){
 render() {
     return (
       <div className="">
-        <div className="container">
+        <div className="loginForm">
           <div className="row">
-            <div className="col-md-6 col-md-offset-3">
+            <div className="col-md-10 col-md-offset-1">
               <h2>Sign Up Form</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">

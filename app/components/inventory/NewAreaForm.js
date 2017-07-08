@@ -32,7 +32,6 @@ handleSubmit(event){
     console.log(err);
   });
   this.setState({area: "", color: ""});
-  location.reload();
 }
 render() {
     return (
@@ -40,7 +39,7 @@ render() {
       <div className="">
         <div className="container">
           <div className="row">
-            <div className="col-md-6 col-md-offset-3">
+            <div className="col-md-12">
               <h2>Make New Area</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">

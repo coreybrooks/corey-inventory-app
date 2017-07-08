@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var sequelize = require('sequelize');
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -82,6 +83,25 @@ module.exports = function(app) {
     });
   });
 
+  //route for retrieving inventory per date per company
+  app.get("/api/table/:companyName/:date", function(req, res) {
+    console.log("api/table/:companyName/:date get route is working in api-routes");
+    console.log(`api/table/:companyName/:date: ${JSON.stringify(req.params.date)}`);
+    db.Inventory.findAll({
+      where: {
+         companyName: req.params.companyName,
+         date: req.params.date               
+        },
+       order: [[sequelize.col('item'), 'ASC']]
+      }).then(function(Inventory) {
+      console.log(`api/table/:companyName/:date: ${JSON.stringify(Inventory)}`);
+          res.json(Inventory);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  });
+
+
 
 
   //route for creating new item
@@ -100,7 +120,9 @@ module.exports = function(app) {
     console.log("api/items/:companyName get route is working in api-routes");
     console.log(req.params.companyName);
     db.Item.findAll({
-      where: {companyName: req.params.companyName}}).then(function(Item) {
+      where: {companyName: req.params.companyName},
+      order: [[sequelize.col('item'), 'ASC']]
+    }).then(function(Item) {
       res.json(Item);
     }).catch(function(err) {
       res.json(err);

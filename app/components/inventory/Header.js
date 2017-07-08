@@ -15,8 +15,7 @@ render() {
                 </div>
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav navbar-right">
-                    <li><a href="/"><i className="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                    <li><a href="/logout"><i className="fa fa-plus" aria-hidden="true"></i> Logout</a></li>
+                    <li><a href="/logout"><i className="fa fa-hand-spock-o" aria-hidden="true"></i> Logout</a></li>
                 </ul>
                 </div>
             </div>

@@ -18,6 +18,7 @@ export default class ItemForm extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.createItem = this.createItem.bind(this);
+        this.color2 = this.color2.bind(this);
   }
 componentDidMount() {
     this.setState({companyName: this.props.companyName});
@@ -60,20 +61,23 @@ createItem() {
   });
   this.setState({item: "", unitSize: "", area1: "", color1: "", area2: "", color2: "", dailyNeed:""});
 }
+color2 () {
+          axios.get(`/api/areaColor/${this.props.companyName}/${this.state.area2}`).then( results => {
+            this.setState({color2: results.data});
+            console.log(`api/areaColor GET request results: ${JSON.stringify(results.data)}`);
+            console.log(`this.state.color2: ${JSON.stringify(this.state.color2)}`);
+            this.createItem();
+         });
+}
 handleSubmit(event){
   console.log("handleSubmit is working");
   event.preventDefault();
   //axios request to retrieve colors associated with areas
         axios.get(`/api/areaColor/${this.props.companyName}/${this.state.area1}`).then( results => {
               this.setState({color1: results.data});
-        console.log(`api/areaColor GET request results: ${JSON.stringify(results.data)}`);
+            console.log(`api/areaColor GET request results: ${JSON.stringify(results.data)}`);
             console.log(`this.state.color1: ${JSON.stringify(this.state.color1)}`);
-        });
-        axios.get(`/api/areaColor/${this.props.companyName}/${this.state.area2}`).then( results => {
-              this.setState({color2: results.data});
-        console.log(`api/areaColor GET request results: ${JSON.stringify(results.data)}`);
-            console.log(`this.state.color2: ${JSON.stringify(this.state.color2)}`);
-            this.createItem();
+            this.color2();
         });
 }
 render() {
@@ -82,7 +86,7 @@ render() {
       <div className="">
         <div className="container">
           <div className="row">
-            <div className="col-md-6 col-md-offset-3">
+            <div className="col-md-12">
               <h2>Make New Item</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">

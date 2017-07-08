@@ -5,6 +5,9 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
     },
+    date: {
+        type: DataTypes.DATEONLY        
+    },
     itemNumber: {
       type: DataTypes.INTEGER,
       allowNull: false  
