@@ -31,8 +31,14 @@ export default class Inventory extends Component {
        var count2 = parseFloat($(`#area2Item${item.id}`).val());
        var days = parseInt($("#days").val());
        var date = $("#date").val();
-       var dailyNeed = parseFloat(item.dailyNeed);     
-       var countTotal = count1 + count2;
+       var dailyNeed = parseFloat(item.dailyNeed);
+       var countTotal = ""; 
+       if (count2) {    
+         countTotal = count1 + count2;
+      }
+      else {
+        countTotal = count1;
+      }
        var order = Math.ceil(dailyNeed*days - countTotal);
        if (order < 0) {
          order = 0;
