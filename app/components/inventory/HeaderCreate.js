@@ -27,12 +27,12 @@ render() {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a href="#" className="noHover" style={{float: "left"}}><h4 class="title2">Kanban Inventory</h4></a>
+          <a href="#" className="noHover" style={{float: "left"}}><h4 className="title2">Kanban Inventory</h4></a>
         </div>
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul className="nav navbar-nav navbar-right">
-            <li><a href={this.state ? `/#/members/${this.state.companyName}` : `/logout`}><i className="fa fa-plus-circle" aria-hidden="true"></i> Create</a></li>
+            <li><a href={this.state ? `/#/members/${this.state.companyName}` : `/logout`}><i className="fa fa-plus-circle" aria-hidden="true"></i> Create New Items</a></li>
             <li><a href="/logout"><i className="fa fa-chevron-circle-up" aria-hidden="true"></i> Logout</a></li>
           </ul>
         </div>

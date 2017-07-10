@@ -50,7 +50,7 @@ render() {
                   onChange={this.handleChange}
                   className="form-control" 
                   id="area" 
-                  placeholder="for example: walk-in"
+                  placeholder="enter name of inventory area (e.g. Front Counter)"
                   />
                 </div>
                 <div className="form-group">

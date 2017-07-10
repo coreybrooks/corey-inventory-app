@@ -30,7 +30,7 @@ render() {
           <div className="row">
             <div className="col-md-12 memberContainer">
               <h2 className="text-center">Welcome <span>{this.state.memberName}</span></h2>
-              <hr/>
+              <hr className="headRow"/>
               <div className="col-sm-6">
                 <div className="row">
                   <div className="instructionsDiv">

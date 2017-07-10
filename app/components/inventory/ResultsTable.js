@@ -43,6 +43,7 @@ export default class Inventory extends Component {
           <div className="inventoryContainer">
             <form className="tableForm" onSubmit={this.handleSubmit}>
               <h2 className="text-center">{this.props.params.companyName} Inventory</h2> 
+              <hr className="headRow"/>
               <div><h4>Date: <span id="dateSpan"></span></h4></div>
               <table className="table table-striped table-bordered table-responsive table-compact">
                 <thead>
