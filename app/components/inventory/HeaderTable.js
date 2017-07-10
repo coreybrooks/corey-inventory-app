@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 
-export default class Header extends Component {
+export default class HeaderTable extends Component {
     constructor() {
         super();
 
@@ -31,6 +31,7 @@ render() {
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul className="nav navbar-nav navbar-right">
+            <li><a href={this.state ? `/#/members/${this.state.companyName}` : `/logout`}><i className="fa fa-plus-circle" aria-hidden="true"></i> Create</a></li>
             <li><a href={this.state ? `/#/inventory/${this.state.companyName}` : `/logout`}><i className="fa fa-chevron-circle-right" aria-hidden="true"></i> Inventory</a></li>
             <li><a href="/logout"><i className="fa fa-chevron-circle-up" aria-hidden="true"></i> Logout</a></li>
           </ul>

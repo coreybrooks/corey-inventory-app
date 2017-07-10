@@ -1,19 +1,10 @@
 import React, { Component} from 'react';
 
-export default class Header extends Component {
+export default class HeaderBlank extends Component {
     constructor() {
         super();
-
-        this.state = {
-            companyName : ""
-        };
-        this.componentDidMount = this.componentDidMount.bind(this);
     }
 
-componentDidMount() {
-  this.setState({companyName: this.props.companyName});
-
-}
 
 render() {
     return (
@@ -27,13 +18,6 @@ render() {
             <span className="icon-bar"></span>
           </button>
           <a href="#" className="noHover" style={{float: "left"}}><h4 className="title2">Kanban Inventory</h4></a>
-        </div>
-
-        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul className="nav navbar-nav navbar-right">
-            <li><a href={this.state ? `/#/inventory/${this.state.companyName}` : `/logout`}><i className="fa fa-chevron-circle-right" aria-hidden="true"></i> Inventory</a></li>
-            <li><a href="/logout"><i className="fa fa-chevron-circle-up" aria-hidden="true"></i> Logout</a></li>
-          </ul>
         </div>
       </div>
     </nav>

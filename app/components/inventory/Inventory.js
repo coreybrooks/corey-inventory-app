@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import InventoryForm from "./InventoryForm";
 import AreaLegend from "./AreaLegend";
+import HeaderCreate from "./HeaderCreate";
 
 export default class Inventory extends Component {
    constructor() {
@@ -76,6 +77,8 @@ export default class Inventory extends Component {
   }
   render() {
       return (
+        <div>
+          <HeaderCreate companyName={this.props.params.companyName}/>
           <div className="inventoryContainer">
             <AreaLegend companyName={this.props.params.companyName} />
             <form className="tableForm" onSubmit={this.handleSubmit}>
@@ -154,6 +157,7 @@ export default class Inventory extends Component {
               <button type="submit" className="btn btn-primary">Submit</button>
             </form>
           </div>
+        </div>  
       );
     }
 }

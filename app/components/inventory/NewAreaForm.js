@@ -67,11 +67,11 @@ render() {
                     <option>green</option>
                     <option>lightgreen</option>
                     <option>magenta</option>
-                    <option>olive</option>
                     <option>orange</option>
                     <option>pink</option>
                     <option>red</option>
                     <option>yellow</option>
+                    <option>yellowgreen</option>
                  </select>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>

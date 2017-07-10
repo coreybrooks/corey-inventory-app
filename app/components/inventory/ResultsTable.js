@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import InventoryForm from "./InventoryForm";
 import AreaLegend from "./AreaLegend";
+import HeaderTable from "./HeaderTable";
 
 export default class Inventory extends Component {
    constructor() {
@@ -37,6 +38,8 @@ export default class Inventory extends Component {
   }
   render() {
       return (
+        <div>
+          <HeaderTable companyName={this.props.params.companyName} />
           <div className="inventoryContainer">
             <form className="tableForm" onSubmit={this.handleSubmit}>
               <h2 className="text-center">{this.props.params.companyName} Inventory</h2> 
@@ -61,9 +64,10 @@ export default class Inventory extends Component {
 
                 </tbody>  
     		  </table>
-              <button type="submit" className="btn btn-default">Make PDF</button>
+              <button type="submit" className="btn btn-primary">Make PDF</button>
             </form>
           </div>
+        </div>  
       );
   }
 }

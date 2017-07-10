@@ -3,6 +3,7 @@ import axios from "axios";
 import NewAreaForm from "./NewAreaForm";
 import ItemForm from "./ItemForm";
 import AreaLegend from "./AreaLegend";
+import Header from "./Header";
 
 export default class Member extends Component {
     constructor() {
@@ -17,15 +18,14 @@ export default class Member extends Component {
 componentDidMount() {
     console.log(`this.params: ${JSON.stringify(this.props.params)}`);
     this.setState({memberName: this.props.params.companyName});
-    {/*axios.get(`/api/user-data`).then( data => {
-        this.setState({memberName: data.email});
-    })*/}
 }
 inventoryRedirect() {
     window.location.replace(`/#/inventory/${this.state.memberName}`);
 }
 render() {
     return (
+      <div>
+        <Header companyName={this.props.params.companyName}/>
         <div className="container">
           <div className="row">
             <div className="col-md-12 memberContainer">
@@ -62,6 +62,7 @@ render() {
               Begin inventory
             </button>
         </div>
+      </div>  
     );
  }
 }

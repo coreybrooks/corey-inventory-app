@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
+import HeaderBlank from "./HeaderBlank";
 
 export default class LoginForm extends Component {
     constructor() {
@@ -37,14 +38,13 @@ handleSubmit(event){
   }).catch(function(err) {
     console.log(err);
   });
-  {/*window.location.replace(`/#/listing/${this.state.subredditId}`);
-  this.setState({emailInput: "", passwordInput: ""}); not sure if I need this yet */}
   this.setState({email: "", password: ""});
 }
 render() {
     return (
       
-      <div className="">
+      <div>
+        <HeaderBlank />
         <div className="loginForm">
           <div className="row">
             <div className="col-md-10 col-md-offset-1">
@@ -58,7 +58,7 @@ render() {
                   onChange={this.handleChange}
                   className="form-control" 
                   id="email" 
-                  placeholder="enter email address"
+                  placeholder="enter email"
                   />
                 </div>
                 <div className="form-group">
