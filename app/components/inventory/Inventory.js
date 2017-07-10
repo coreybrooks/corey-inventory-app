@@ -132,6 +132,8 @@ export default class Inventory extends Component {
                             </td>
                             <td style={{color: item.color2}}><strong>{item.area2}</strong></td>
                             <td>
+                              {/*display form input area only if area2 exists */}
+                              { item.area2 ?
                               <div className="form-group">
                                 <input 
                                 type="text" 
@@ -139,7 +141,8 @@ export default class Inventory extends Component {
                                 id={`area2Item${item.id}`} 
                                 placeholder=""
                                 />
-                              </div>
+                              </div> : ""
+                              }
                             </td>
                             <td>{item.dailyNeed}</td>
                             <td>{item.unitSize}</td>
@@ -148,7 +151,7 @@ export default class Inventory extends Component {
                       })}
                 </tbody>  
 			        </table>
-              <button type="submit" className="btn btn-default">Submit</button>
+              <button type="submit" className="btn btn-primary">Submit</button>
             </form>
           </div>
       );

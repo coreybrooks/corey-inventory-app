@@ -28,7 +28,7 @@ render() {
     return (
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-12 memberContainer">
               <h2 className="text-center">Welcome <span>{this.state.memberName}</span></h2>
               <hr/>
               <div className="col-sm-6">
@@ -36,21 +36,24 @@ render() {
                   <div className="instructionsDiv">
                     <p className="instructions col-sm-5 col-sm-offset-1">
                       <span className="instructionsHeader">  Instructions</span><br/>  
-                      1. Create inventory areas and assign colors<br/>
-                      2. Create items and designate areas<br/>
-                      3. Items that are in more than two areas can be listed multiple times<br/>
-                      4. Begin inventory
+                      1) Create inventory areas and assign colors<br/>
+                      2) Create items and designate areas<br/>
+                      3) Items that are in more than two areas can be listed multiple times<br/>
+                      4) Begin inventory
                     </p>
                   </div>
                   <div className="col-sm-3 col-sm-offset-2">   
                     <AreaLegend companyName={this.props.params.companyName} />
                   </div> 
                 </div>
+
                 <div className="row">
-                  <NewAreaForm companyName={this.props.params.companyName} />
+                  <div className="newAreaFormDiv">    
+                    <NewAreaForm companyName={this.props.params.companyName} />
+                  </div>  
                 </div>
               </div>
-              <div className="col-sm-6">
+              <div className="col-sm-6 newItemDiv">
                 <ItemForm companyName={this.props.params.companyName} />
               </div>
             </div>

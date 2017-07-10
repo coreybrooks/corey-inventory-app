@@ -1,5 +1,5 @@
 body {
-    background-image: url("https://images.designtrends.com/wp-content/uploads/2015/11/17061911/Plain-Black-Wood-Background.jpg");
+    background-image: url("./../images/darkwood.jpg");
     height: 101%;
     padding: 15px;
 }
@@ -20,12 +20,19 @@ html {
     margin: auto;
     margin-bottom: 10px;
 }
+.memberContainer {
+    position: relative;
+}
+.newItemDiv {
+    position: relative;
+    bottom: -13px;
+}
 .colorLegend {
     width: 150px;
     border: 2px groove white;
     border-radius: 10px;
-
     float: right;
+    margin-bottom: 10px;
 }
 .instructionsDiv {
 
@@ -40,6 +47,9 @@ html {
     padding: 20px;
     color: yellow;
 }
+.newAreaContainer {
+
+}
 .tableForm {
     width: 100%;
     max-width: 800px;
@@ -48,7 +58,7 @@ html {
 .loginForm {
     width: 100%;
     max-width: 600px;
-    background-image: url("https://s-media-cache-ak0.pinimg.com/originals/ac/57/45/ac5745515372af1376879f53fd33dd02.jpg");
+    background-image: url("./../images/darkstriped.jpg");
     margin: auto;
     margin-top: 40px;
     border: 2px groove white;
@@ -106,10 +116,10 @@ html {
 .inventoryButton {
     width: 30%;
     height: 50px;
-    margin: auto;
+    margin-top: 10px;
     border: 1px solid #2A9FD6;    
     border-radius: 10px;
-    font-size: 28px;
+    font-size: 16px;
     float: right;
 }
 #name {

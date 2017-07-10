@@ -36,8 +36,8 @@ handleSubmit(event){
 render() {
     return (
       
-      <div className="">
-        <div className="container">
+      <div className="container">
+        <div className="newAreaContainer">
           <div className="row">
             <div className="col-md-12">
               <h2>Create New Area</h2>

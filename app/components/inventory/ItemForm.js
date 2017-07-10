@@ -62,12 +62,17 @@ createItem() {
   this.setState({item: "", unitSize: "", area1: "", color1: "", area2: "", color2: "", dailyNeed:""});
 }
 color2 () {
+        if (this.state.area2) {
           axios.get(`/api/areaColor/${this.props.companyName}/${this.state.area2}`).then( results => {
             this.setState({color2: results.data});
             console.log(`api/areaColor GET request results: ${JSON.stringify(results.data)}`);
             console.log(`this.state.color2: ${JSON.stringify(this.state.color2)}`);
             this.createItem();
          });
+        }
+        else {
+          this.createItem();
+        } 
 }
 handleSubmit(event){
   console.log("handleSubmit is working");
@@ -83,8 +88,8 @@ handleSubmit(event){
 render() {
     return (
       
-      <div className="">
-        <div className="container">
+      <div className="container">
+        <div className="newItemContainer">
           <div className="row">
             <div className="col-md-12">
               <h2>Create New Item</h2>
