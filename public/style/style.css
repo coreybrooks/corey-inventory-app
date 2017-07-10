@@ -1,6 +1,7 @@
 body {
-    background-image: url("https://www.walldevil.com/wallpapers/a77/backgrounds-abstract-green-aurora-wallpapers.jpg");
+    background-image: url("https://images.designtrends.com/wp-content/uploads/2015/11/17061911/Plain-Black-Wood-Background.jpg");
     height: 101%;
+    padding: 15px;
 }
 html {
     height:101%;
@@ -16,25 +17,38 @@ html {
     border-radius: 10px;
     width: 100%;
     max-width: 1100px;
-    background-color: black;
     margin: auto;
     margin-bottom: 10px;
 }
 .colorLegend {
     width: 150px;
     border: 2px groove white;
-    margin: 10px;
+    border-radius: 10px;
+
     float: right;
+}
+.instructionsDiv {
+
+}
+.instructionsHeader {
+    text-decoration: underline;
+    font-size: 28px;
+    margin: auto;
+}
+.instructions {
+    border: 2px groove white;
+    padding: 20px;
+    color: yellow;
 }
 .tableForm {
     width: 100%;
-    max-width: 1100px;
+    max-width: 800px;
     margin: auto;
 }
 .loginForm {
     width: 100%;
     max-width: 600px;
-    background-color: black;
+    background-image: url("https://s-media-cache-ak0.pinimg.com/originals/ac/57/45/ac5745515372af1376879f53fd33dd02.jpg");
     margin: auto;
     margin-top: 40px;
     border: 2px groove white;
@@ -53,9 +67,31 @@ html {
     color: white;
     height: 80px;
     margin-left: 10px;
+    width: 100%;
+    max-width: 180px;
 }
-.date, .days {
+.dayDiv {
+    background-color: #181818;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    color: white;
+    height: 80px;
+    margin-left: 10px;
+    width: 100%;
+    max-width: 90px;
+}
+.date {
     height: 30px;
+    width: 100%;
+    max-width: 150px;
+    margin: auto;
+}
+.days {
+    height: 30px;
+    width: 100%;
+    max-width: 80px; 
+    margin: auto;
 }
 .areaName {
     padding-left: 10px;
@@ -68,11 +104,13 @@ html {
     width: 150px;
 }
 .inventoryButton {
-    width: 100%;
+    width: 30%;
     height: 50px;
-    margin: auto;    
+    margin: auto;
+    border: 1px solid #2A9FD6;    
     border-radius: 10px;
     font-size: 28px;
+    float: right;
 }
 #name {
     width: 250px

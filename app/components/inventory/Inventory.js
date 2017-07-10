@@ -79,8 +79,7 @@ export default class Inventory extends Component {
           <div className="inventoryContainer">
             <AreaLegend companyName={this.props.params.companyName} />
             <form className="tableForm" onSubmit={this.handleSubmit}>
-              <h3 className="text-center">{this.props.params.companyName} Inventory</h3> 
-                <div className="row">              
+              <h2 className="text-center">{this.props.params.companyName} Inventory</h2><br/><br/>
                   <div className="form-group col-sm-2 dateDiv">
                     <label htmlFor="date">Date</label>
                     <input 
@@ -90,7 +89,7 @@ export default class Inventory extends Component {
                       placeholder=""
                       />
                   </ div>           
-                  <div className="form-group col-sm-1 dateDiv">
+                  <div className="form-group col-sm-1 dayDiv">
                     <label htmlFor="days"># of days</label>
                     <input 
                       type="text" 
@@ -99,7 +98,6 @@ export default class Inventory extends Component {
                       placeholder=""
                       />
                   </ div>  
-                </div>           
               <table className="table table-striped table-bordered table-responsive table-compact">
                 <thead>
                   <tr>
@@ -121,7 +119,7 @@ export default class Inventory extends Component {
                           <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.item}</td>
-                            <td style={{color: item.color1}}>{item.area1}</td>
+                            <td style={{color: item.color1}}><strong>{item.area1}</strong></td>
                             <td>
                               <div className="form-group">
                                 <input 
@@ -132,7 +130,7 @@ export default class Inventory extends Component {
                                 />
                               </div>
                             </td>
-                            <td style={{color: item.color2}}>{item.area2}</td>
+                            <td style={{color: item.color2}}><strong>{item.area2}</strong></td>
                             <td>
                               <div className="form-group">
                                 <input 

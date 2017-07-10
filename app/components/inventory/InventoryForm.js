@@ -17,7 +17,7 @@ export default class InventoryForm extends Component {
 	render() {
 			return (
 				<tr>
-					<td>{this.state.item.id}</td>
+					<td>{this.state.item.itemNumber}</td>
 					<td>{this.state.item.item}</td>
 					<td>{this.state.item.area1}</td>
 					<td>{this.state.item.area2}</td>

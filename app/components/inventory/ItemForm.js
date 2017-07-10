@@ -87,30 +87,41 @@ render() {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h2>Make New Item</h2>
+              <h2>Create New Item</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor="item">Name of Item</label>
+                  <label htmlFor="item">Item Name</label>
                   <input 
                   type="text" 
                   value={this.state.item}
                   onChange={this.handleChange}
                   className="form-control" 
                   id="item" 
-                  placeholder="enter item"
+                  placeholder="enter item name"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="unitSize">Unit Size (e.g. 20lb box)</label>
+                  <label htmlFor="unitSize">Unit Size</label>
                   <input 
                   type="text" 
                   value={this.state.unitSize}
                   onChange={this.handleChange}
                   className="form-control" 
                   id="unitSize" 
-                  placeholder="enter unit size"
+                  placeholder="enter unit size (e.g. 20lb box)"
                   />
                 </div>
+                <div className="form-group">
+                  <label htmlFor="dailyNeed">Daily Need (decimals)</label>
+                  <input 
+                  type="text" 
+                  value={this.state.dailyNeed}
+                  onChange={this.handleChange}
+                  className="form-control" 
+                  id="dailyNeed" 
+                  placeholder="units used per day in decimals (e.g. 0.2)"
+                  />
+                </div>               
                 <div className="form-group">
                   <label htmlFor="area1">Select Area 1</label>
                   <select
@@ -129,21 +140,11 @@ render() {
                   onChange={this.handleChange}
                   className="form-control selection2" 
                   id="area2" 
+                  placeholder="select area 2"
                   >
                  </select>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="dailyNeed">Daily Need (decimals)</label>
-                  <input 
-                  type="text" 
-                  value={this.state.dailyNeed}
-                  onChange={this.handleChange}
-                  className="form-control" 
-                  id="dailyNeed" 
-                  placeholder="units used per day"
-                  />
-                </div>               
-                <button type="submit" className="btn btn-default">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
               </form>
             </div>
           </div>

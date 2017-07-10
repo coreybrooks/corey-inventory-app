@@ -58,7 +58,7 @@ render() {
                   onChange={this.handleChange}
                   className="form-control" 
                   id="email" 
-                  placeholder="Email"
+                  placeholder="enter email address"
                   />
                 </div>
                 <div className="form-group">
@@ -69,10 +69,10 @@ render() {
                   onChange={this.handleChange}
                   className="form-control" 
                   id="password" 
-                  placeholder="Password"
+                  placeholder="enter password"
                   />
                 </div>
-                <button type="submit" className="btn btn-default">Login</button>
+                <button type="submit" className="btn btn-primary">Login</button>
               </form>
               <br />
               <p>Or sign up <a href="/#/signup">here</a></p>

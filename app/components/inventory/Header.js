@@ -11,7 +11,7 @@ render() {
         <div className="navbar navbar-default">
             <div className="container-fluid">
                 <div className="navbar-header">
-                <a className="navbar-brand" href="#">Corey's Inventory App</a>
+                <a className="navbar-brand" href="#">Kanban Inventory</a>
                 </div>
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav navbar-right">

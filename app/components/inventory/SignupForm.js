@@ -53,7 +53,7 @@ render() {
                   onChange={this.handleChange}
                   className="form-control" 
                   id="email" 
-                  placeholder="Email"
+                  placeholder="enter email"
                   />
                 </div>
                 <div className="form-group">
@@ -64,7 +64,7 @@ render() {
                   onChange={this.handleChange}
                   className="form-control" 
                   id="password" 
-                  placeholder="Password"
+                  placeholder="enter password"
                   />
                 </div>
                 <div className="form-group">
@@ -75,10 +75,10 @@ render() {
                   onChange={this.handleChange}
                   className="form-control" 
                   id="companyName" 
-                  placeholder="Company Name"
+                  placeholder="enter company name"
                   />
                 </div>
-                <button type="submit" className="btn btn-default">Sign Up</button>
+                <button type="submit" className="btn btn-primary">Sign Up</button>
               </form>
               <br />
               <p>Or log in <a href="/#/login">here</a></p>

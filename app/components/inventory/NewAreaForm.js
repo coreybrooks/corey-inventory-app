@@ -40,7 +40,7 @@ render() {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h2>Make New Area</h2>
+              <h2>Create New Area</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="newAreaName">Name of Area</label>
@@ -66,15 +66,15 @@ render() {
                     <option>lightblue</option>
                     <option>green</option>
                     <option>lightgreen</option>
+                    <option>magenta</option>
                     <option>olive</option>
                     <option>orange</option>
                     <option>pink</option>
-                    <option>purple</option>
                     <option>red</option>
                     <option>yellow</option>
                  </select>
                 </div>
-                <button type="submit" className="btn btn-default">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
               </form>
             </div>
           </div>
