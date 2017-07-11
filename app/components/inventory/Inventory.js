@@ -16,6 +16,7 @@ export default class Inventory extends Component {
         this.componentDidMount = this.componentDidMount.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.removeRecord = this.removeRecord.bind(this);
    }
   handleChange(event){
     var newState = {};
@@ -81,6 +82,20 @@ export default class Inventory extends Component {
         this.setState({items: results.data});
       });
   }
+  removeRecord(event) {
+    event.preventDefault();
+    console.log("delete button clicked");
+    console.log(`event.target.id: ${JSON.stringify(event.target.id)}`);
+    var confirmDelete = confirm("Are you sure you want to delete this item?");
+    
+    if (confirmDelete) {
+    axios.delete(`/api/items/${this.props.params.companyName}/${event.target.id}`).then( results => {
+      console.log(`record deleted`);
+      location.reload();
+    });
+  } 
+   
+}
   render() {
       return (
         <div>
@@ -118,6 +133,7 @@ export default class Inventory extends Component {
                     <th>Count 2</th>
                     <th>Daily Need</th>
                     <th>Unit Size</th>
+                    <th>Delete Item</th>
                   </tr>
                 </thead>
                 <tbody className="inventoryTable">
@@ -155,6 +171,15 @@ export default class Inventory extends Component {
                             </td>
                             <td>{item.dailyNeed}</td>
                             <td>{item.unitSize}</td>
+                            <td>
+                              <div>
+                                <button
+                                    className="deleteButton btn-danger"
+                                    id={item.id}
+                                    onClick={this.removeRecord}>x
+                                </button>
+                              </div>
+                            </td>
                           </tr>
                         );
                       })}

@@ -119,6 +119,11 @@ html {
     color: white; 
     width: 150px;
 }
+.deleteButton {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
 .inventoryButton {
     width: 30%;
     height: 50px;

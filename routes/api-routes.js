@@ -140,6 +140,22 @@ module.exports = function(app) {
     });
   });
 
+  //route for deleting an item
+  app.delete(`/api/items/:companyName/:itemId`, function(req, res) {
+    console.log("/api/items/:companyName/itemId delete route is working in api-routes");
+    console.log(req.params.companyName);
+    db.Item.destroy({
+      where: {
+        companyName: req.params.companyName,
+        id: req.params.itemId
+      }      
+    }).then(function(Item) {
+      res.json(Item);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  });
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
