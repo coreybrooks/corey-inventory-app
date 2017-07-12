@@ -19,12 +19,17 @@ export default class ItemForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.createItem = this.createItem.bind(this);
         this.color2 = this.color2.bind(this);
+        this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
   }
-componentDidMount() {
+componentWillReceiveProps() {
     this.setState({companyName: this.props.companyName});
+    this.props.companyName ?
+
     //axios request to get the existing areas for this company
     axios.get(`/api/area/${this.props.companyName}`).then( results => {
        console.log(`axios get api/area working in componentDidMount, data: ${JSON.stringify(results.data)}`);
+       $(".selection1").empty();
+       $(".selection2").empty();
        var data = results.data;
        //dynamically create the form options based on the existing areas
        var option = $("<option>");
@@ -44,7 +49,7 @@ componentDidMount() {
          option2.text(data[i].area);
          $(".selection2").append(option2);
        }  
-    });
+    }) : console.log(`this.props.companyName not received yet in ItemForm`);
 }
 handleChange(event){
     var newState = {};

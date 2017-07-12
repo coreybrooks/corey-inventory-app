@@ -28,6 +28,7 @@ handleSubmit(event){
   var data= this.state;
   axios.post("/api/area", data).then( response => {
     console.log(`area response: ${JSON.stringify(response.data)}`);
+    this.props.setTerms(response.data); 
     }).catch(function(err) {
     console.log(err);
   });

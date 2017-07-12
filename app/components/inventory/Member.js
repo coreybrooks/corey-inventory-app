@@ -10,14 +10,25 @@ export default class Member extends Component {
         super();
 
         this.state= {
-            memberName: ""
+            memberName: "",
+            areaColors: []
         };
         this.componentDidMount = this.componentDidMount.bind(this);
         this.inventoryRedirect = this.inventoryRedirect.bind(this);
+        this.setTerms = this.setTerms.bind(this);
+        this.render = this.render.bind(this);
     }
+setTerms(data) {
+  console.log(`setTerms data: ${JSON.stringify(data)}`);
+  this.setState({areaColors: data});
+}
 componentDidMount() {
-    console.log(`this.params: ${JSON.stringify(this.props.params)}`);
     this.setState({memberName: this.props.params.companyName});
+    axios.get(`/api/area/${this.props.params.companyName}`).then( results => {
+       console.log(`axios get api/area/:companyName working in componentDidMount Member, data: ${JSON.stringify(results.data)}`);
+       this.setState({areaColors: results.data});
+       console.log(`within componentDidMount this.state.areaColors: ${JSON.stringify(this.state.areaColors)}`);
+    });
 }
 inventoryRedirect() {
     window.location.replace(`/#/inventory/${this.state.memberName}`);
@@ -43,18 +54,27 @@ render() {
                     </p>
                   </div>
                   <div className="col-sm-3 col-sm-offset-2">   
-                    <AreaLegend companyName={this.props.params.companyName} />
+                    <AreaLegend 
+                    companyName={this.state.memberName}
+                    areaColors={this.state.areaColors} 
+                    />
                   </div> 
                 </div>
 
                 <div className="row">
                   <div className="newAreaFormDiv">    
-                    <NewAreaForm companyName={this.props.params.companyName} />
+                    <NewAreaForm 
+                    companyName={this.props.params.companyName}
+                    setTerms={this.setTerms} 
+                    />
                   </div>  
                 </div>
               </div>
               <div className="col-sm-6 newItemDiv">
-                <ItemForm companyName={this.props.params.companyName} />
+                <ItemForm 
+                companyName={this.props.params.companyName}
+                areaColors={this.state.areaColors} 
+                />
               </div>
             </div>
           </div>

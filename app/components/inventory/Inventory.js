@@ -26,6 +26,16 @@ export default class Inventory extends Component {
   handleSubmit(event) {
     console.log(`handleSubmit is working`);
     event.preventDefault();
+    var temp = $("#date").val();
+    console.log();
+    if ($("#date").val() === "") {
+      alert ("please enter the date")
+      return
+    }
+    if ($("#days").val() === "") {
+      alert ("please enter the number of days the inventory should cover");
+      return
+    }
     for (var i=0;i<this.state.items.length;i++) {
        var item = this.state.items[i];
        var count1 = parseFloat($("#area1Item"+item.id).val());
@@ -174,7 +184,7 @@ export default class Inventory extends Component {
                             <td>
                               <div>
                                 <button
-                                    className="deleteButton btn-danger"
+                                    className="deleteButton btn-default"
                                     id={item.id}
                                     onClick={this.removeRecord}>x
                                 </button>
