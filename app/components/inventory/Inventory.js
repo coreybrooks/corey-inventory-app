@@ -81,7 +81,6 @@ export default class Inventory extends Component {
         });
     }    
   }
-
   componentDidMount() {
       console.log(`Inventory component mounted`);
       console.log("inventory" + this.props.params.companyName);
@@ -101,8 +100,13 @@ export default class Inventory extends Component {
     if (confirmDelete) {
     axios.delete(`/api/items/${this.props.params.companyName}/${event.target.id}`).then( results => {
       console.log(`record deleted`);
-      location.reload();
     });
+
+    axios.get(`/api/items/${this.props.params.companyName}`).then( results => {
+      console.log(`axios get api/items working in componentDidMount Inventory, data: ${JSON.stringify(results.data)}`);
+      this.setState({items: results.data});
+    });
+
   } 
    
 }
