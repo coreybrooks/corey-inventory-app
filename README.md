@@ -43,16 +43,14 @@ There are several inefficiencies this app solves:
 * The time is takes to sum the data and calculate the order after the count is complete
 
 ### Instructions for users
-* 1) Log in or sign up with user credentials 
-* 1) Create inventory areas and assign colors
-* 2) Create items and designate up to two areas.  Items that are in more than two areas can be listed multiple times
-* 4) Begin inventory:
-
-a) Move to an area and begin completing the inventory list by scanning for the color associated with the area and entering item totals  
-b) Enter the total for the item (in unit decimals) into the form position and move to the next form position with that color.  Once a total is entered, the color for that form position changes to gray 
-c) Enter values for every form position with the same color before moving to the next location
-
-* 5) Once all forms positions are filled, or all colors have changed to gray, submit the inventory and create a PDF of the results if desired
+1) Log in or sign up with user credentials 
+2) Create inventory areas and assign colors
+3) Create items and designate up to two areas.  Items that are in more than two areas can be listed multiple times
+4) Begin inventory:
+* Move to an area and begin completing the inventory list by scanning for the color associated with the area and entering item totals  
+* Enter the total for the item (in unit decimals) into the form position and move to the next form position with that color.  Once a total is entered, the color for that form position changes to gray 
+* Enter values for every form position with the same color before moving to the next location
+ 5) Once all forms positions are filled, or all colors have changed to gray, submit the inventory and create a PDF of the results if desired
 
 
 ## Overview of code
@@ -94,5 +92,5 @@ The following paths are routed using the React router methodology:
 This application is deployed on Heroku and can be viewed here: [coreys-inventory-app](http://corey-inventory-app.herokuapp.com/):
 
 Either login and begin the user instructions (using a fake email and company name is fine), or use this guest email and password:
-email: test@test.com
+email: "test@test.com",
 password: test
