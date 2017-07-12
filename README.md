@@ -8,10 +8,10 @@ This is an inventory application that can be used by any company that still uses
 Companies with massive inventory requirements such as Walmart already use automatic barcoding inventory systems, and large warehouses can use inventory systems utilizing RFID tags.  However, many large companies, such as restaurants, need to conduct daily inventory counts on every product.  Domino's Pizza is a good example.  They were recently named the largest pizza chain in American, and it is my understanding that every chain conducts daily inventory counts using pen and paper.  One reason for this issue is the inconsistency of store layouts.  If every store layout and product storage was exactly the same, creating a master inventory checklist would be easy.  However, most Domino's franchisees lease or buy existing buildings to adapt for their businesses.  This practice makes sense financially, but it also means that almost every store location is slightly different.   This mean that in every location there are different storage rooms, office space, etc.  This creates a logistical issue in creating a master inventory list that can be used by every chain store. 
  
 From a process engineering standpoint, any small inefficiency in the system adds up and over time can cost a significant portion of the labor margin.  In addition to unique location layouts, there are other inefficiencies to the pen-and-paper inventory methodology.  Employees conduct inventory counts in one of a few different ways:
-* 1) Begin observing items in a location and search for the item on the list to mark the count, and attempt to count every item in a location before moving to the next location.  The problem with this method is that items are typically listed alphabetically and the user must find them by scanning the list.  This would only take a few seconds if the items were listed exactly as you would expect on a single page, but there is a learning curve to discerning the item names.  For example, trash bags might be listed as "liner, trash 50 gal", and lists are typically longer than one page.  Also, items are typically located in more than one area.
-* 2) Move to a location and begin scanning the list to find all items in the location to mark the count.  This method might save a little time because the employee conducting the inventory is typically more familiar with the location of the item within a location than the location of the item on the list.  The problem with this method is that it still takes time to scan the list for each item, and it is easy to miss items which causes the employee to move back and forth between locations.
-* 3) Some companies attempt to group items by location which is a better method.  The problem with this method is that most locations are not the same.  Even if every location made a unique segmented list specific to their location, most items are located in more than one place which causes the employee to sum the items together from multiple places on the list once completed.
-* -** In addition, all three methods require calculations after the count is complete.  The most advanced systems require data entry into an inventory system to calculate orders and compile data tracking.  Less sophisticated systems require the employee to manually add items and calculate the order 
+1) Begin observing items in a location and search for the item on the list to mark the count, and attempt to count every item in a location before moving to the next location.  The problem with this method is that items are typically listed alphabetically and the user must find them by scanning the list.  This would only take a few seconds if the items were listed exactly as you would expect on a single page, but there is a learning curve to discerning the item names.  For example, trash bags might be listed as "liner, trash 50 gal", and lists are typically longer than one page.  Also, items are typically located in more than one area.
+2) Move to a location and begin scanning the list to find all items in the location to mark the count.  This method might save a little time because the employee conducting the inventory is typically more familiar with the location of the item within a location than the location of the item on the list.  The problem with this method is that it still takes time to scan the list for each item, and it is easy to miss items which causes the employee to move back and forth between locations.
+3) Some companies attempt to group items by location which is a better method.  The problem with this method is that most locations are not the same.  Even if every location made a unique segmented list specific to their location, most items are located in more than one place which causes the employee to sum the items together from multiple places on the list once completed.
+** In addition, all three methods require calculations after the count is complete.  The most advanced systems require data entry into an inventory system to calculate orders and compile data tracking.  Less sophisticated systems require the employee to manually add items and calculate the order.
 
 #### Common sense would suggest that the following would be the optimally efficient way to do an inventory check:
  * 1. Make only one trip around the store, stopping at each location only once
@@ -36,20 +36,22 @@ Kanban has also been adapted to help with workflow for software development, but
  
 There are several inefficiencies this app solves:
 
-* 1) The time is takes to scan the inventory text to find the item
-* 2) The method that is used to choose which item to check
-* 3) The issue of having items stored in more than one location
-* 4) The problem of moving back and forth between locations to find items
-* 5) The time is takes to sum the data and calculate the order after the count is complete
+* The time is takes to scan the inventory text to find the item
+* The method that is used to choose which item to check
+* The issue of having items stored in more than one location
+* The problem of moving back and forth between locations to find items
+* The time is takes to sum the data and calculate the order after the count is complete
 
 ### Instructions for users
 * 1) Log in or sign up with user credentials 
 * 1) Create inventory areas and assign colors
 * 2) Create items and designate up to two areas.  Items that are in more than two areas can be listed multiple times
 * 4) Begin inventory:
-a) Move to an area and begin completing the inventory list by scanning for the color associated with the area and entering item totals.  
-b) Enter the total for the item (in unit decimals) into the form position and move to the next form position with that color.  Once a total is entered, the color for that form position changes to gray. 
-c) Enter values for every form position with the same color before moving to the next location.
+
+a) Move to an area and begin completing the inventory list by scanning for the color associated with the area and entering item totals  
+b) Enter the total for the item (in unit decimals) into the form position and move to the next form position with that color.  Once a total is entered, the color for that form position changes to gray 
+c) Enter values for every form position with the same color before moving to the next location
+
 * 5) Once all forms positions are filled, or all colors have changed to gray, submit the inventory and create a PDF of the results if desired
 
 
