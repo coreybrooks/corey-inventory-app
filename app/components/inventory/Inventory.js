@@ -106,6 +106,13 @@ export default class Inventory extends Component {
   } 
    
 }
+handleChange(event) {
+  console.log(`handleChange event.target.id: ${event.target.id}`);
+  var targetId = `${event.target.id.substring(0,5)}${event.target.id.substring(9)}`;
+  console.log(targetId);
+  $(`#${targetId}`).attr("style", "color:gray");
+
+}
   render() {
       return (
         <div>
@@ -154,7 +161,7 @@ export default class Inventory extends Component {
                           <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.item}</td>
-                            <td style={{color: item.color1}}><strong>{item.area1}</strong></td>
+                            <td id={`area1${item.id}`} style={{color: item.color1}}><strong>{item.area1}</strong></td>
                             <td>
                               <div className="form-group">
                                 <input 
@@ -162,10 +169,11 @@ export default class Inventory extends Component {
                                 className="form-control" 
                                 id={`area1Item${item.id}`} 
                                 placeholder=""
+                                onChange={this.handleChange}
                                 />
                               </div>
                             </td>
-                            <td style={{color: item.color2}}><strong>{item.area2}</strong></td>
+                            <td id={`area2${item.id}`} style={{color: item.color2}}><strong>{item.area2}</strong></td>
                             <td>
                               {/*display form input area only if area2 exists */}
                               { item.area2 ?
@@ -175,6 +183,7 @@ export default class Inventory extends Component {
                                 className="form-control" 
                                 id={`area2Item${item.id}`} 
                                 placeholder=""
+                                onChange={this.handleChange}
                                 />
                               </div> : ""
                               }
