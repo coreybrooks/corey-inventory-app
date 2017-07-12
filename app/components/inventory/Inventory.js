@@ -121,8 +121,31 @@ handleChange(event) {
       return (
         <div>
           <HeaderCreate companyName={this.props.params.companyName}/>
-          <div className="inventoryContainer">
+            <div className="inventoryContainer">
+              <div className="modal fade" id="myModal" role="dialog">
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 className="modal-title title2">Instructions</h4>
+                    </div>
+                    <div className="modal-body">
+                      <p>
+                        1) Go to an inventory area and begin completing the form.  Scan for the color on the form associated with the inventory area, and begin entering item totals<br/><br/>
+                        2) Enter the totals for items using unit decimals, for example: <br/>For one half of a 20lb Box enter:    0.5 or .5<br/><br/>
+                        3) Then scan for the next form position with the same area color and enter the total for the item.  Once a total is entered, the area color for that form position changes to gray<br/><br/>
+                        4) Enter the totals for every item with the same area color before moving to the next inventory area<br/><br/>
+                        5) Once all form positions are filled (no more colors are present) submit the form to calculate the order and display the results table
+                      </p>
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <AreaLegend companyName={this.props.params.companyName} />
+            <button type="button" className="btn-default instructionsButton">Instructions</button>
             <form className="tableForm" onSubmit={this.handleSubmit}>
               <h2 className="text-center">{this.props.params.companyName} Inventory</h2><br/><br/>
                   <div className="form-group col-sm-2 dateDiv">
@@ -152,7 +175,6 @@ handleChange(event) {
                     <th>Count 1</th>
                     <th>Area 2</th>
                     <th>Count 2</th>
-                    <th>Daily Need</th>
                     <th>Unit Size</th>
                     <th>Delete Item</th>
                   </tr>
@@ -192,7 +214,6 @@ handleChange(event) {
                               </div> : ""
                               }
                             </td>
-                            <td>{item.dailyNeed}</td>
                             <td>{item.unitSize}</td>
                             <td>
                               <div>

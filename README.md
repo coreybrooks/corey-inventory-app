@@ -55,7 +55,7 @@ There are several inefficiencies this app solves:
 
 ## Overview of code
 
-## Routing
+### Routing
 
 #### Express Routes
 The following requests are routed with Express and Node.js.  They are called using Axios:  
@@ -89,8 +89,8 @@ The following paths are routed using the React router methodology:
 * Inventory Component: renders the inventory information and dynamically creates the form for the inventory count
 * ResultsTable Component: calculates the results of the inventory count and displays the results
 
-This application is deployed on Heroku and can be viewed here: [coreys-inventory-app](http://corey-inventory-app.herokuapp.com/):
+This application is deployed on Heroku and can be viewed here: [coreys-inventory-app](https://corey-inventory-app.herokuapp.com/):
 
 Either login and begin the user instructions (using a fake email and company name is fine), or use this guest email and password:
-email: "test@test.com",
+email: test@test.com,
 password: test
