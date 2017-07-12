@@ -66,7 +66,7 @@ module.exports = function(app) {
     });
   });
 
-    //route for retrieving inventory areas per company
+    //route for retrieving inventory area colors per company
   app.get("/api/areaColor/:companyName/:area", function(req, res) {
     console.log("api/areaColor/:companyName/:area get route is working in api-routes");
     console.log(`api/areaColor req.params.area: ${JSON.stringify(req.params.area)}`);

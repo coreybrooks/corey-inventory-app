@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const logger = require("morgan");
-const mongoose = require('mongoose')
 const app = express();
 var session = require("express-session");
 // Requiring passport as we've configured it
