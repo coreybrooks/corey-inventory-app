@@ -14,11 +14,11 @@ From a process engineering standpoint, any small inefficiency in the system adds
 * -** In addition, all three methods require calculations after the count is complete.  The most advanced systems require data entry into an inventory system to calculate orders and compile data tracking.  Less sophisticated systems require the employee to manually add items and calculate the order 
 
 #### Common sense would suggest that the following would be the optimally efficient way to do an inventory check:
- * 1) Make only one trip around the store, stopping at each location only once
- * 2) Instantly know where to find an item on the list, and don't waste any time looking for items
- * 3) Have a system that automatically sums the count
- * 4) Have a system that automatically enters the data into the tracking system
- * 5) Have a system that automatically places the order
+ * 1. Make only one trip around the store, stopping at each location only once
+ * 2. Instantly know where to find an item on the list, and don't waste any time looking for items
+ * 3. Have a system that automatically sums the count
+ * 4. Have a system that automatically enters the data into the tracking system
+ * 5. Have a system that automatically places the order
 
    Enter Kanban.. What is Kanban? Here is an explanation from [leankit](https://leankit.com/learn/kanban/what-is-kanban/):
 
@@ -89,7 +89,7 @@ The following paths are routed using the React router methodology:
 * Inventory Component: renders the inventory information and dynamically creates the form for the inventory count
 * ResultsTable Component: calculates the results of the inventory count and displays the results
 
-This application is deployed on Heroku and can be viewed here: [coreys-inventory-app](https://coreys-reddit-react-project.herokuapp.com/):
+This application is deployed on Heroku and can be viewed here: [coreys-inventory-app](http://corey-inventory-app.herokuapp.com/):
 
 Either login and begin the user instructions (using a fake email and company name is fine), or use this guest email and password:
 email: test@test.com
