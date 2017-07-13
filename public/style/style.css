@@ -37,6 +37,14 @@ html {
     float: right;
     margin-bottom: 10px;
 }
+.colorLegend2 {
+    width: 200px;
+    border: 2px groove white;
+    border-radius: 10px;
+    float: right;
+    margin-bottom: 10px;
+    padding: 20px;
+}
 .headRow {
     border-bottom: 1px solid white;
 }
@@ -89,6 +97,12 @@ html {
 .legendTitle {
     border-bottom: 2px groove white;
     padding-bottom: 5px;
+}
+.deleteArea {
+    text-align: center;
+    font-size: 10px;
+    border: 1px solid red;
+    color: red;
 }
 .dateDiv {
     background-color: #181818;

@@ -156,6 +156,22 @@ module.exports = function(app) {
     });
   });
 
+  app.delete(`/api/deleteArea/:companyName/:id`, function(req, res) {
+    console.log("/api/deleteArea/:id delete route is working in api-routes");
+    console.log(req.params.id);
+    db.Area.destroy({
+      where: {
+        companyName: req.params.companyName,
+        id: req.params.id
+      }      
+    }).then(function(Area) {
+      res.json(Area);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  });
+
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();

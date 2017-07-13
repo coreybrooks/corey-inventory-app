@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import NewAreaForm from "./NewAreaForm";
 import ItemForm from "./ItemForm";
-import AreaLegend from "./AreaLegend";
+import AreaLegendEdit from "./AreaLegendEdit";
 import Header from "./Header";
 
 export default class Member extends Component {
@@ -54,7 +54,7 @@ render() {
                     </p>
                   </div>
                   <div className="col-sm-3 col-sm-offset-2">   
-                    <AreaLegend 
+                    <AreaLegendEdit 
                     companyName={this.state.memberName}
                     areaColors={this.state.areaColors} 
                     />
