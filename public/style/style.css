@@ -70,7 +70,7 @@ html {
     margin: auto;
     margin-bottom: 20px;
 }
-.instructionsButton {
+.instructionsButton, .instructionsButton2 {
     height: 40px;
 }
 .modal-body {
@@ -100,9 +100,10 @@ html {
 }
 .deleteArea {
     text-align: center;
-    font-size: 10px;
     border: 1px solid red;
     color: red;
+    margin-bottom: 5px;
+    height: 50%;
 }
 .dateDiv {
     background-color: #181818;

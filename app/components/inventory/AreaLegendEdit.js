@@ -30,7 +30,7 @@ export default class AreaLegend extends Component {
     console.log(`event.target.id: ${JSON.stringify(event.target.id)}`);
     console.log(`handleClick companyName: ${this.props.companyName}`);
 
-    var confirmDelete = confirm("Are you sure you want to delete this area?\n  You will likely need to also delete any items associated with this area");
+    var confirmDelete = confirm("Are you sure you want to delete this area?\nYou will likely need to also delete any items associated with this area");
     
     if (confirmDelete) {
     axios.delete(`/api/deleteArea/${this.props.companyName}/${event.target.id}`).then( results => {
@@ -59,7 +59,7 @@ render() {
                           onClick={this.handleClick}
                           id={area.id}
                         >x</button>
-                      </div>    
+                      </div>
                     </div>  
                   </div>
                 );

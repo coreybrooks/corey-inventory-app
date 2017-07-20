@@ -82,13 +82,23 @@ color2 () {
 handleSubmit(event){
   console.log("handleSubmit is working");
   event.preventDefault();
-  //axios request to retrieve colors associated with areas
-        axios.get(`/api/areaColor/${this.props.companyName}/${this.state.area1}`).then( results => {
-              this.setState({color1: results.data});
-            console.log(`api/areaColor GET request results: ${JSON.stringify(results.data)}`);
-            console.log(`this.state.color1: ${JSON.stringify(this.state.color1)}`);
-            this.color2();
-        });
+        //validate if the daily need was entered as a float variable
+        var floatValue = results.data.dailyNeed;
+        var decimal=  /^[-+]?[0-9]+\.[0-9]+$/;   
+        if(floatValue.match(decimal)) {   
+          console.log('float data is validated');  
+          //axios request to retrieve colors associated with areas
+          axios.get(`/api/areaColor/${this.props.companyName}/${this.state.area1}`).then( results => {
+                this.setState({color1: results.data});
+              console.log(`api/areaColor GET request results: ${JSON.stringify(results.data)}`);
+              console.log(`this.state.color1: ${JSON.stringify(this.state.color1)}`);
+              this.color2();
+          });
+        }  
+        else {   
+          alert('Please enter a decimal value for the daily need.  For example, for one half of a 20lb Box enter: 0.5 or .5');  
+          return;  
+        }    
 }
 render() {
     return (

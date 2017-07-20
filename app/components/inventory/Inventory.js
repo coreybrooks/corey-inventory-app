@@ -145,7 +145,7 @@ handleChange(event) {
                 </div>
               </div>
             <AreaLegend companyName={this.props.params.companyName} />
-            <button type="button" className="btn-default instructionsButton">Instructions</button>
+            <button type="button" className="btn-default instructionsButton">Inventory Instructions</button>
             <form className="tableForm" onSubmit={this.handleSubmit}>
               <h2 className="text-center">{this.props.params.companyName} Inventory</h2><br/><br/>
                   <div className="form-group col-sm-2 dateDiv">

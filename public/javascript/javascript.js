@@ -6,6 +6,11 @@ $(document).on("click", ".instructionsButton", function() {
   $("#myModal").modal("toggle");
 });
 
+$(document).on("click", ".instructionsButton2", function() {
+  console.log("instructionsButton clicked");  
+  $("#myModal2").modal("toggle");
+});
+
 /*$(document).on("click", ".deleteArea", function() {
   console.log(`deleteArea button clicked`);
   console.log(`this.id1: ${this.id1}`);

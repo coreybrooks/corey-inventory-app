@@ -38,21 +38,36 @@ render() {
       <div>
         <Header companyName={this.props.params.companyName}/>
         <div className="container">
+          <div className="modal fade" id="myModal2" role="dialog">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 className="modal-title title2">Instructions</h4>
+                </div>
+                <div className="modal-body">
+                  <p>
+                      1) Create inventory areas in the create new area form, and assign one color per area<br/>
+                      2) Create inventory items in the create new item form, and designate the areas where the item is located<br/>
+                      3) Items that are in more than two areas can be listed multiple times<br/>
+                      4) Begin inventory<br/>
+                      5) If necessary, items can be deleted from the inventory form in the next section
+                  </p>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="row">
             <div className="col-md-12 memberContainer">
+              <button type="button" className="btn-default instructionsButton2">Instructions</button>
               <h2 className="text-center">Welcome <span>{this.state.memberName}</span></h2>
               <hr className="headRow"/>
               <div className="col-sm-6">
                 <div className="row">
-                  <div className="instructionsDiv">
-                    <p className="instructions col-sm-5 col-sm-offset-1">
-                      <span className="instructionsHeader">  Instructions</span><br/>  
-                      1) Create inventory areas and assign colors<br/>
-                      2) Create items and designate areas<br/>
-                      3) Items that are in more than two areas can be listed multiple times<br/>
-                      4) Begin inventory
-                    </p>
-                  </div>
                   <div className="col-sm-3 col-sm-offset-2">   
                     <AreaLegendEdit 
                     companyName={this.state.memberName}
