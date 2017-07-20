@@ -83,7 +83,7 @@ handleSubmit(event){
   console.log("handleSubmit is working");
   event.preventDefault();
         //validate if the daily need was entered as a float variable
-        var floatValue = results.data.dailyNeed;
+        var floatValue = this.state.dailyNeed;
         var decimal=  /^[-+]?[0-9]+\.[0-9]+$/;   
         if(floatValue.match(decimal)) {   
           console.log('float data is validated');  
