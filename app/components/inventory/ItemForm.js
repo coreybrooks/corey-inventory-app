@@ -60,11 +60,11 @@ createItem() {
     var data= this.state;
     console.log(`this data: ${JSON.stringify(data)}`)
     axios.post("/api/item", data).then( response => {
-    console.log(`item response: ${JSON.stringify(response.data)}`);
+      console.log(`item response: ${JSON.stringify(response.data)}`);
     }).catch(function(err) {
-    console.log(err);
-  });
-  this.setState({item: "", unitSize: "", area1: "", color1: "", area2: "", color2: "", dailyNeed:""});
+      console.log(err);
+    });
+      this.setState({item: "", unitSize: "", area1: "", color1: "", area2: "", color2: "", dailyNeed:""});
 }
 color2 () {
         if (this.state.area2) {
@@ -82,10 +82,26 @@ color2 () {
 handleSubmit(event){
   console.log("handleSubmit is working");
   event.preventDefault();
-        //validate if the daily need was entered as a float variable
+        //variables to validate if the dailNeed was entered as a float variable        
         var floatValue = this.state.dailyNeed;
-        var decimal=  /^[-+]?[0-9]+\.[0-9]+$/;   
-        if(floatValue.match(decimal)) {   
+        var decimal=  /^[-+]?[0-9]+\.[0-9]+$/;  
+        var data = this.state;
+        console.log(`Number.isInteger(floatValue): ${Number.isInteger(parseInt(floatValue))}`);
+        
+        //validate that the necessary form data has been entered
+        if (data.item === "") {
+            alert("Please enter the name for the item");
+          }
+          else if (data.unitSize === "") {
+            alert("Please enter the unit size");
+          }
+          else if (data.area1 === "" && data.area2 === "") {
+            alert("Please select at least one area");
+          }
+          else if (data.dailyNeed === "") {
+            alert("Please enter the daily need");
+          }
+          else if(floatValue.match(decimal) || Number.isInteger(parseInt(floatValue))) {   
           console.log('float data is validated');  
           //axios request to retrieve colors associated with areas
           axios.get(`/api/areaColor/${this.props.companyName}/${this.state.area1}`).then( results => {
@@ -96,7 +112,7 @@ handleSubmit(event){
           });
         }  
         else {   
-          alert('Please enter a decimal value for the daily need.  For example, for one half of a 20lb Box enter: 0.5 or .5');  
+          alert('Please enter an integer or a decimal value for the Daily Need.\n\nFor example:\nFor one half of a 20lb Box enter: 0.5 or .5\nFor one whole 20lb Box enter: 1 or 1.0');  
           return;  
         }    
 }
