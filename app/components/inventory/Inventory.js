@@ -37,8 +37,17 @@ export default class Inventory extends Component {
       return
     }
     for (var i=0;i<this.state.items.length;i++) {
+       var decimal=  /^[-+]?[0-9]+\.[0-9]+$/;  
        var item = this.state.items[i];
        var count1 = parseFloat($("#area1Item"+item.id).val());
+       console.log(count1);
+         if (count1 || Number.isInteger(count1) || count1 === "") {
+           console.log(`count1 is valid`);
+         }
+         else {
+           alert('Please enter an integer or a decimal value for the Daily Need.\n\nFor example:\nFor one half of a 20lb Box enter: 0.5 or .5\nFor one whole 20lb Box enter: 1 or 1.0');  
+           return
+         }
        var count2 = parseFloat($(`#area2Item${item.id}`).val());
        var days = parseInt($("#days").val());
        var date = $("#date").val();

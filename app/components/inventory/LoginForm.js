@@ -48,6 +48,7 @@ render() {
         <div className="loginForm">
           <div className="row">
             <div className="col-md-10 col-md-offset-1">
+              <p id="loginNotes">To see an example with pre-loaded items, log in with: <br/>test@test.com, password: test</p>
               <h2>Login Form</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
