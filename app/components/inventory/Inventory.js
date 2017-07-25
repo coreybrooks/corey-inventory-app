@@ -37,11 +37,12 @@ export default class Inventory extends Component {
       return
     }
     for (var i=0;i<this.state.items.length;i++) {
-       var decimal=  /^[-+]?[0-9]+\.[0-9]+$/;  
        var item = this.state.items[i];
        var count1 = parseFloat($("#area1Item"+item.id).val());
-       console.log(count1);
-         if (count1 || Number.isInteger(count1) || count1 === "") {
+       var decimal=  /^[-+]?[0-9]+\.[0-9]+$/;  
+       count1 ? count1=count1 : count1="";
+       console.log(`count1: ${count1}`);
+         if (count1.match(decimal) || count1 === "") {
            console.log(`count1 is valid`);
          }
          else {

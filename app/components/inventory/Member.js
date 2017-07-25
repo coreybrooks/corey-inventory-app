@@ -68,7 +68,7 @@ render() {
               <hr className="headRow"/>
               <div className="col-sm-6">
                 <div className="row">
-                  <div className="col-sm-3 col-sm-offset-2">   
+                  <div className="">   
                     <AreaLegendEdit 
                     companyName={this.state.memberName}
                     areaColors={this.state.areaColors} 
