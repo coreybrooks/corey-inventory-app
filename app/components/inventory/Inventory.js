@@ -17,6 +17,7 @@ export default class Inventory extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.removeRecord = this.removeRecord.bind(this);
+        this.createRecords = this.createRecords.bind(this);
    }
   handleChange(event){
     var newState = {};
@@ -26,8 +27,7 @@ export default class Inventory extends Component {
   handleSubmit(event) {
     console.log(`handleSubmit is working`);
     event.preventDefault();
-    var temp = $("#date").val();
-    console.log();
+    //validate the data before creating the records in the database
     if ($("#date").val() === "") {
       alert ("please enter the date")
       return
@@ -38,24 +38,62 @@ export default class Inventory extends Component {
     }
     for (var i=0;i<this.state.items.length;i++) {
        var item = this.state.items[i];
-       var count1 = parseFloat($("#area1Item"+item.id).val());
-       var decimal=  /^[-+]?[0-9]+\.[0-9]+$/;  
-       count1 ? count1=count1 : count1="";
-       console.log(`count1: ${count1}`);
-         if (count1.match(decimal) || count1 === "") {
-           console.log(`count1 is valid`);
-         }
-         else {
-           alert('Please enter an integer or a decimal value for the Daily Need.\n\nFor example:\nFor one half of a 20lb Box enter: 0.5 or .5\nFor one whole 20lb Box enter: 1 or 1.0');  
+       //validate the counts if they are not undefined
+       if ($("#area1Item"+item.id).val() && isNaN($("#area1Item"+item.id).val())) {
+           console.log(`error item in area1, item #: ${item.id}`);
+           alert('Please enter an integer or a decimal value for the count values.\n\nFor example:\nFor one half of a 20lb Box enter: 0.5 or .5\nFor one whole 20lb Box enter: 1 or 1.0');  
            return
-         }
+       }
+       else if ($("#area2Item"+item.id).val() && isNaN($("#area2Item"+item.id).val())) {
+           console.log(`error item in area2, item #: ${item.id}`);
+           alert('Please enter an integer or a decimal value for the count values.\n\nFor example:\nFor one half of a 20lb Box enter: 0.5 or .5\nFor one whole 20lb Box enter: 1 or 1.0');  
+           return
+       }
+    } 
+    this.createRecords(); 
+  }
+  componentDidMount() {
+      console.log(`Inventory component mounted`);
+      console.log("inventory" + this.props.params.companyName);
+      this.setState({companyName: this.props.params.companyName});
+      //axios request to get items
+      axios.get(`/api/items/${this.props.params.companyName}`).then( results => {
+        console.log(`axios get api/items working in componentDidMount Inventory, data: ${JSON.stringify(results.data)}`);
+        this.setState({items: results.data});
+      });
+  }
+  removeRecord(event) {
+    event.preventDefault();
+    console.log("delete button clicked");
+    console.log(`event.target.id: ${JSON.stringify(event.target.id)}`);
+    var confirmDelete = confirm("Are you sure you want to delete this item?");
+    
+    if (confirmDelete) {
+    axios.delete(`/api/items/${this.props.params.companyName}/${event.target.id}`).then( results => {
+      console.log(`record deleted`);
+    });
+
+    axios.get(`/api/items/${this.props.params.companyName}`).then( results => {
+      console.log(`axios get api/items working in componentDidMount Inventory, data: ${JSON.stringify(results.data)}`);
+      this.setState({items: results.data});
+    });
+  }    
+}
+createRecords() {
+      for (var i=0;i<this.state.items.length;i++) {
+       var item = this.state.items[i];
+       var count1 = parseFloat($("#area1Item"+item.id).val());
+       console.log(`count1: ${count1}`);
        var count2 = parseFloat($(`#area2Item${item.id}`).val());
        var days = parseInt($("#days").val());
        var date = $("#date").val();
        var dailyNeed = parseFloat(item.dailyNeed);
        var countTotal = ""; 
-       if (count2) {    
+       if (count2 && count1) {    
          countTotal = count1 + count2;
+      }
+      else if(count2 && !count1) {
+        countTotal = count2;
       }
       else {
         countTotal = count1;
@@ -89,36 +127,7 @@ export default class Inventory extends Component {
           }).catch(function(err) {
           console.log(err);
         });
-    }    
-  }
-  componentDidMount() {
-      console.log(`Inventory component mounted`);
-      console.log("inventory" + this.props.params.companyName);
-      this.setState({companyName: this.props.params.companyName});
-      //axios request to get items
-      axios.get(`/api/items/${this.props.params.companyName}`).then( results => {
-        console.log(`axios get api/items working in componentDidMount Inventory, data: ${JSON.stringify(results.data)}`);
-        this.setState({items: results.data});
-      });
-  }
-  removeRecord(event) {
-    event.preventDefault();
-    console.log("delete button clicked");
-    console.log(`event.target.id: ${JSON.stringify(event.target.id)}`);
-    var confirmDelete = confirm("Are you sure you want to delete this item?");
-    
-    if (confirmDelete) {
-    axios.delete(`/api/items/${this.props.params.companyName}/${event.target.id}`).then( results => {
-      console.log(`record deleted`);
-    });
-
-    axios.get(`/api/items/${this.props.params.companyName}`).then( results => {
-      console.log(`axios get api/items working in componentDidMount Inventory, data: ${JSON.stringify(results.data)}`);
-      this.setState({items: results.data});
-    });
-
-  } 
-   
+    }  
 }
 handleChange(event) {
   console.log(`handleChange event.target.id: ${event.target.id}`);
