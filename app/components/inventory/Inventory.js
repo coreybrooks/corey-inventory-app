@@ -91,18 +91,17 @@ createRecords() {
        var countTotal = ""; 
        if (count2 && count1) {    
          countTotal = count1 + count2;
-      }
-      else if(count2 && !count1) {
-        countTotal = count2;
-      }
-      else {
-        countTotal = count1;
-      }
+       }
+       else if(count2 && !count1) {
+         countTotal = count2;
+       }
+       else {
+         countTotal = count1;
+       }
        var order = Math.ceil(dailyNeed*days - countTotal);
        if (order < 0) {
          order = 0;
-       }   
-       
+       }      
        console.log(`order: ${order}`);
        console.log(`item ${item.id}, count1: ${count1}, total: ${countTotal}`);
        console.log(`area1: ${item.area1}`);
