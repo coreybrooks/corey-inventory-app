@@ -3,7 +3,8 @@ import axios from "axios";
 import InventoryForm from "./InventoryForm";
 import AreaLegend from "./AreaLegend";
 import HeaderTable from "./HeaderTable";
-import 
+import PDFDocument from "pdfkit";
+import blobStream from "blob-stream";
 
 export default class Inventory extends Component {
    constructor() {
@@ -19,7 +20,12 @@ export default class Inventory extends Component {
    }
   handleSubmit(event) {
     event.preventDefault();
-    window.print();
+    //try to use the stream function from blob-stream
+    stream.on
+    blob = stream.toBlob(`${this.props.params.companyName}/${this.props.params.date}/pdf`);
+    url = stream.toBlobURL(`${this.props.params.companyName}/${this.props.params.date}/pdf`);
+    iframe.src = url;   
+
   }
   componentDidMount() {
       console.log(`ResultsTable component mounted`);
@@ -33,6 +39,10 @@ export default class Inventory extends Component {
     });
   }
   render() {
+      //set variables for pdfkit
+      doc = new PDFDocument;
+      stream = doc.pipe(blobStream());
+
       return (
         <div>
           <HeaderTable companyName={this.props.params.companyName} />
@@ -65,6 +75,7 @@ export default class Inventory extends Component {
             </form>
           </div>
         </div>  
+        doc.end()
       );
   }
 }
