@@ -47,11 +47,13 @@ render() {
                 </div>
                 <div className="modal-body">
                   <p>
-                      1) Create inventory areas in the create new area form, and assign one color per area<br/>
-                      2) Create inventory items in the create new item form, and designate the areas where the item is located<br/>
-                      3) Items that are in more than two areas can be listed multiple times<br/>
-                      4) Begin inventory<br/>
-                      5) If necessary, items can be deleted from the inventory form in the next section
+                      1) Create inventory areas in the Create New Area form<br/>
+                      • assign one color per area<br/><br/>
+                      2) Create inventory items in the Create New Item form<br/>
+                      • designate the areas where the item is located<br/>
+                      • Items that are in more than two areas can be listed multiple times<br/><br/>
+                      3) Begin inventory<br/>
+                      • Items can be deleted from the inventory form in the next section
                   </p>
                 </div>
                 <div className="modal-footer">

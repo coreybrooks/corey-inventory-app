@@ -150,8 +150,9 @@ handleChange(event) {
                     <div className="modal-body">
                       <p>
                         1) Go to an inventory area and begin completing the form.  Scan for the color on the form associated with the inventory area, and begin entering item totals<br/><br/>
-                        2) Enter the totals for items using unit decimals, for example: <br/>For one half of a 20lb Box enter:    0.5 or .5<br/><br/>
-                        3) Then scan for the next form position with the same area color and enter the total for the item.  Once a total is entered, the area color for that form position changes to gray<br/><br/>
+                        2) Enter the total for an item in decimals, for example: <br/>For one half of a 20lb Box enter:    0.5 or .5<br/><br/>
+                        3) Remain in the same area, and enter the total for the next item with the same area color.<br/>
+                        • Once a total is entered, the area color changes to gray<br/><br/>
                         4) Enter the totals for every item with the same area color before moving to the next inventory area<br/><br/>
                         5) Once all form positions are filled (no more colors are present) submit the form to calculate the order and display the results table
                       </p>
