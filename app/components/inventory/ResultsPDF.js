@@ -1,3 +1,4 @@
+//the current version of pdfkit is not advanced enough to make tables
 import React, {Component} from "react";
 import axios from "axios";
 import InventoryForm from "./InventoryForm";
@@ -30,6 +31,9 @@ export default class Inventory extends Component {
   componentDidMount() {
       console.log(`ResultsTable component mounted`);
       console.log("inventory" + this.props.params.companyName);
+      // variable for pdfkit 
+      doc = new PDFDocument;
+
       this.setState({companyName: this.props.params.companyName});
       //axios request to get items
       axios.get(`/api/table/${this.props.params.companyName}/${this.props.params.date}`).then( results => {
@@ -40,10 +44,10 @@ export default class Inventory extends Component {
   }
   render() {
       //set variables for pdfkit
-      doc = new PDFDocument;
       stream = doc.pipe(blobStream());
 
       return (
+
         <div>
           <HeaderTable companyName={this.props.params.companyName} />
           <div className="inventoryContainer">
