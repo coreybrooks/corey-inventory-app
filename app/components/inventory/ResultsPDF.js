@@ -4,6 +4,7 @@ import InventoryForm from "./InventoryForm";
 import AreaLegend from "./AreaLegend";
 import HeaderTable from "./HeaderTable";
 import 
+//the dependencies for phantom-html-to-pdf seem to be deprecated, or at least not functional on my system
 
 export default class Inventory extends Component {
    constructor() {
