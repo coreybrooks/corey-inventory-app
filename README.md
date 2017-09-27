@@ -89,5 +89,5 @@ The following paths are routed using the React router methodology:
 * Inventory Component: renders the inventory information and dynamically creates the form for the inventory count
 * ResultsTable Component: calculates the results of the inventory count and displays the results
 
-This application is deployed on Heroku and can be viewed here: [coreys-inventory-app](https://corey-inventory-app.herokuapp.com/):S
+This application is deployed on Heroku and can be viewed here: [coreys-inventory-app](https://corey-inventory-app.herokuapp.com/)
 
