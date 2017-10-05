@@ -1,3 +1,9 @@
+//maybe try changing the date to the begin inventory area, then change the route to include the date.
+//if it pull existing data, then using the color legend to display only one area might work, would be able
+//to switch back and forth and display the count items already tallied. If the onChange events check to see
+//if a number is present before turning grey then it would also solve the problem of greyed out empty cells
+//when a number is deleted
+
 import React, {Component} from 'react';
 import axios from "axios";
 import NewAreaForm from "./NewAreaForm";
