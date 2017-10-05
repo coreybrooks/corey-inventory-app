@@ -50,9 +50,9 @@ render() {
                       1) Create inventory areas in the Create New Area form<br/>
                       • assign one color per area<br/><br/>
                       2) Create inventory items in the Create New Item form<br/>
-                      • designate the areas where the item is located<br/>
+                      • select the areas where the item is located<br/>
                       • Items that are in more than two areas can be listed multiple times<br/><br/>
-                      3) Begin inventory<br/>
+                      3) Click the 'Begin inventory' button<br/>
                       • Items can be deleted from the inventory form in the next section
                   </p>
                 </div>
