@@ -4,6 +4,10 @@
 //if a number is present before turning grey then it would also solve the problem of greyed out empty cells
 //when a number is deleted
 
+//also need to add price to the item categories, in the add new item section and everywhere else.
+//The final count sheet also needs at least the total price for the order.  
+//add more color choices, also try using color wheel with selector
+
 import React, {Component} from 'react';
 import axios from "axios";
 import NewAreaForm from "./NewAreaForm";
