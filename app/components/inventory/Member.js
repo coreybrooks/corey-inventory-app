@@ -8,6 +8,10 @@
 //The final count sheet also needs at least the total price for the order.  
 //add more color choices, also try using color wheel with selector
 
+//a modal with a number pad can be made for pads with no stylus, will also be something simple
+//to click with a mouse
+// 
+
 import React, {Component} from 'react';
 import axios from "axios";
 import NewAreaForm from "./NewAreaForm";
